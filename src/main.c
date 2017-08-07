@@ -7,7 +7,7 @@ int main() {
    char frase[1000];
    int numero_palavras=0, tamanho=0, i=0;
 
-   fgets(frase, 999, stdin); //Lê a string toda (o 1000º caracter é reservado para \n)
+   scanf("%[^\n]s", frase);//Lê a string toda (o 1000º caracter é reservado para \n)
    tamanho=strlen(frase); //Conta o numero de caracteres a serem lidos da string "frase"
 
    while(i<tamanho){
@@ -32,14 +32,14 @@ int main() {
         }
 
         //Caso em que o caracter nao e marcador
-        while(frase[i]!=' ' && frase[i]!='.' && frase[i]!=',' && frase[i]!=';' && frase[i]!='-' && frase[i]!='!' && frase[i]!='?' && frase[i]!='\n'){
+        while(frase[i]!=' ' && frase[i]!='.' && frase[i]!=',' && frase[i]!=';' && frase[i]!='-' && frase[i]!='!' && frase[i]!='?' && frase[i]!='\0'){
             i++;
-            if(frase[i]=='\n')
+            if(frase[i]=='\0')
                 numero_palavras++;
         }
 
         //Caso em que chega no fim da frase e deve-se imprimir o valor de "numero_palavras"
-        if(frase[i]=='\n'){
+        if(frase[i]=='\0'){
             printf("%d\n", numero_palavras);
             break;
         }
